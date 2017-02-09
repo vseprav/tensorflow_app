@@ -5,7 +5,6 @@ RUN adduser --disabled-password --gecos "" app && \
     echo "app:app" | chpasswd && \
     chown -R app:app /home/app
 
-COPY setup.sh /home/app
 COPY requirements.txt /home/app
 COPY tensorflow_tasks /home/app/tensorflow_tasks
 

@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-python run_task1.py
+python tensorflow_tasks/run_task1.py

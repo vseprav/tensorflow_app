@@ -5,11 +5,13 @@ RUN adduser --disabled-password --gecos "" app && \
     echo "app:app" | chpasswd && \
     chown -R app:app /home/app
 
+COPY setup.sh /home/app
+COPY requirements.txt /home/app
 COPY tensorflow_tasks /home/app/tensorflow_tasks
+
+RUN pip install -r /home/app/requirements.txt
 
 USER app
 WORKDIR "/home/app"
-
-ENTRYPOINT ["./tensorflow_tasks/runtests.sh"]
 
 CMD ["python"]

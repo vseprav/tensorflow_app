@@ -1,0 +1,6 @@
+system:
+  docker: true
+hooks:
+  pre_setup: "sudo docker build -t tf ."
+tests:
+  - "sudo docker run tf"

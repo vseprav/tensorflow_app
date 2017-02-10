@@ -3,7 +3,8 @@ system:
   docker: true
 hooks:
   pre_setup: "sudo docker build -t tf ."
-  post_setup: "printenv && ifconfig"
+  post_setup: "printenv && \
+                ifconfig"
 tests:
   - "sudo docker run tf bash -c tensorflow_tasks/test_distributed_tensorflow.sh"
   - "sudo docker run tf bash -c tensorflow_tasks/test_distributed_tensorflow.sh"

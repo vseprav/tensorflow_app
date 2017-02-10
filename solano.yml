@@ -1,9 +1,8 @@
-worker_limit: 2
 system:
   docker: true
 hooks:
   pre_setup: "sudo docker build -t tf ."
-  post_setup: "sudo docker ps -a"
+  post_setup: "ifconfig"
 tests:
   - "sudo docker run tf bash -c tensorflow_tasks/test_distributed_tensorflow.sh"
   - "sudo docker run tf bash -c tensorflow_tasks/test_distributed_tensorflow.sh"

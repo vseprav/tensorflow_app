@@ -1,7 +1,8 @@
+worker_limit: 2
 system:
   docker: true
 hooks:
   pre_setup: "sudo docker build -t tf ."
 tests:
-  - "sudo docker run tf bash -c tensorflow_tasks/nearest_neighbor.sh"
-  - "sudo docker run tf bash -c tensorflow_tasks/run_task1.sh"
+  - "sudo docker run tf bash -c tensorflow_tasks/test_distributed_tensorflow.sh"
+  - "sudo docker run tf bash -c tensorflow_tasks/test_distributed_tensorflow.sh"

@@ -6,3 +6,4 @@ hooks:
 tests:
   - "sudo docker run tf bash -c tensorflow_tasks/test_distributed_tensorflow.sh"
   - "sudo docker run tf bash -c tensorflow_tasks/test_distributed_tensorflow.sh"
+  - "sudo docker run tf bash -c tensorflow_tasks/nearest_neighbor.sh"

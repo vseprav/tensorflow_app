@@ -10,6 +10,7 @@ from __future__ import print_function
 
 import numpy as np
 import tensorflow as tf
+from datetime import datetime
 
 # Import MNIST data
 from tensorflow.examples.tutorials.mnist import input_data
@@ -36,17 +37,18 @@ init = tf.global_variables_initializer()
 
 # Launch the graph
 with tf.Session() as sess:
+    startTime = datetime.now()
     sess.run(init)
 
     # loop over test data
     for i in range(len(Xte)):
         # Get nearest neighbor
         nn_index = sess.run(pred, feed_dict={xtr: Xtr, xte: Xte[i, :]})
-        # Get nearest neighbor class label and compare it to its true label
-        print("Test", i, "Prediction:", np.argmax(Ytr[nn_index]), \
-            "True Class:", np.argmax(Yte[i]))
+
         # Calculate accuracy
         if np.argmax(Ytr[nn_index]) == np.argmax(Yte[i]):
             accuracy += 1./len(Xte)
     print("Done!")
     print("Accuracy:", accuracy)
+    print("Time - ")
+    print(datetime.now() - startTime)

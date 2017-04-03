@@ -2,35 +2,20 @@ import matplotlib.pyplot as plt
 import numpy as np
 import tensorflow as tf
 import os
+import csv
 
-dir_path = os.path.dirname(os.path.realpath(__file__))
-filename = dir_path + "/data.csv"
-
-points_n = 200
 clusters_n = 2
-iteration_n = 100
+iteration_n = 1000
 
 #Training inputs
-data = [
-  [39750,3],
-  [5000,1],
-  [68069,5],
-  [10125,3],
-  [33000,3],
-  [250,1],
-  [100,1]
-]
 
-# def create_file_reader_ops(filename):
-#   reader = tf.TextLineReader()
-#   _, csv_row = reader.read(filename)
-#   record_defaults = [[0], [0]]
-#   funding_total, funding_rounds = tf.decode_csv(csv_row, record_defaults=record_defaults)
+data = []
 
-#   return funding_total, funding_rounds
-
-# filename = tf.train.string_input_producer(["data.csv"])
-# data = create_file_reader_ops(filename)
+with open('data.csv', 'rb') as f:
+  reader = csv.reader(f)
+  for row in reader:
+    new_row = [int(row[0]), int(row[1])]
+    data.append(new_row)
 
 points = tf.constant(data)
 centroids = tf.Variable(tf.slice(tf.random_shuffle(points), [0,0], [clusters_n, -1]))

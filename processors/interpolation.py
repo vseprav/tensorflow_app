@@ -19,8 +19,8 @@ optimizer = tf.train.GradientDescentOptimizer(0.01)
 train = optimizer.minimize(loss)
 
 # training data
-x_train = [1,2]
-y_train = [0,4]
+x_train = [1,2,3,4,5]
+y_train = [0,1,2,3,4]
 
 # training loop
 init = tf.global_variables_initializer()
